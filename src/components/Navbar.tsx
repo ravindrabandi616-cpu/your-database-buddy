@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { to: "/", label: "Home" },
+  { to: "/explore", label: "Explore" },
   { to: "/predict/diabetes", label: "Diabetes" },
-  { to: "/predict/heart", label: "Heart Disease" },
-  { to: "/predict/kidney", label: "Kidney Disease" },
-  { to: "/predict/liver", label: "Liver Disease" },
+  { to: "/predict/heart", label: "Heart" },
+  { to: "/predict/kidney", label: "Kidney" },
+  { to: "/predict/liver", label: "Liver" },
 ];
 
 const Navbar = () => {
