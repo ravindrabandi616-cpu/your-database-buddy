@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index";
 import Explore from "./pages/Explore";
+import DatasetCollection from "./pages/DatasetCollection";
 import DiabetesPrediction from "./pages/DiabetesPrediction";
 import HeartPrediction from "./pages/HeartPrediction";
 import KidneyPrediction from "./pages/KidneyPrediction";
@@ -22,6 +23,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/datasets" element={<DatasetCollection />} />
           <Route path="/predict/diabetes" element={<DiabetesPrediction />} />
           <Route path="/predict/heart" element={<HeartPrediction />} />
           <Route path="/predict/kidney" element={<KidneyPrediction />} />
