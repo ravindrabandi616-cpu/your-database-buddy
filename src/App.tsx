@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index";
 import Explore from "./pages/Explore";
 import DatasetCollection from "./pages/DatasetCollection";
+import DataPreprocessing from "./pages/DataPreprocessing";
 import DiabetesPrediction from "./pages/DiabetesPrediction";
 import HeartPrediction from "./pages/HeartPrediction";
 import KidneyPrediction from "./pages/KidneyPrediction";
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/datasets" element={<DatasetCollection />} />
+          <Route path="/preprocessing" element={<DataPreprocessing />} />
           <Route path="/predict/diabetes" element={<DiabetesPrediction />} />
           <Route path="/predict/heart" element={<HeartPrediction />} />
           <Route path="/predict/kidney" element={<KidneyPrediction />} />
