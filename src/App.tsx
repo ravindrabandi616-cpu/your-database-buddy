@@ -3,8 +3,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import Index from "./pages/Index";
+import DiabetesPrediction from "./pages/DiabetesPrediction";
+import HeartPrediction from "./pages/HeartPrediction";
+import KidneyPrediction from "./pages/KidneyPrediction";
+import LiverPrediction from "./pages/LiverPrediction";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +20,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/predict/diabetes" element={<DiabetesPrediction />} />
+          <Route path="/predict/heart" element={<HeartPrediction />} />
+          <Route path="/predict/kidney" element={<KidneyPrediction />} />
+          <Route path="/predict/liver" element={<LiverPrediction />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
