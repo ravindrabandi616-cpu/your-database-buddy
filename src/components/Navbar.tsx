@@ -8,6 +8,7 @@ const navLinks = [
   { to: "/explore", label: "Explore" },
   { to: "/datasets", label: "Datasets" },
   { to: "/preprocessing", label: "Preprocessing" },
+  { to: "/ml-models", label: "ML Models" },
   { to: "/predict/diabetes", label: "Diabetes" },
   { to: "/predict/heart", label: "Heart" },
   { to: "/predict/kidney", label: "Kidney" },
