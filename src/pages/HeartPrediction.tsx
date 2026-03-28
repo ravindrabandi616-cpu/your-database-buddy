@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import PredictionForm, { FieldConfig } from "@/components/PredictionForm";
 import PredictionResult from "@/components/PredictionResult";
 import { Heart } from "lucide-react";
+import { predictDisease, PredictionResponse } from "@/lib/prediction-api";
 
 const fields: FieldConfig[] = [
   { name: "age", label: "Age", type: "number", placeholder: "e.g. 55", min: 1, max: 120 },
@@ -16,13 +17,20 @@ const fields: FieldConfig[] = [
 ];
 
 const HeartPrediction = () => {
-  const [result, setResult] = useState<"positive" | "negative" | null>(null);
+  const [result, setResult] = useState<PredictionResponse | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const handlePredict = (data: Record<string, any>) => {
-    const chol = Number(data.cholesterol);
-    const age = Number(data.age);
-    const bp = Number(data.restBP);
-    setResult(chol > 250 || (age > 55 && bp > 140) ? "positive" : "negative");
+  const handlePredict = async (data: Record<string, any>) => {
+    try {
+      setError(null);
+      const features: Record<string, number> = {};
+      fields.forEach((f) => (features[f.name] = Number(data[f.name])));
+      const response = await predictDisease("heart", features);
+      setResult(response);
+    } catch (err: any) {
+      setError(err.message);
+      setResult(null);
+    }
   };
 
   return (
@@ -35,6 +43,9 @@ const HeartPrediction = () => {
           fields={fields}
           onSubmit={handlePredict}
         />
+        {error && (
+          <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-destructive">{error}</p>
+        )}
         <PredictionResult result={result} disease="Heart Disease" />
       </section>
     </Layout>
