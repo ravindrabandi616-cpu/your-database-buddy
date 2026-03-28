@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import PredictionForm, { FieldConfig } from "@/components/PredictionForm";
 import PredictionResult from "@/components/PredictionResult";
 import { Droplets } from "lucide-react";
+import { predictDisease, PredictionResponse } from "@/lib/prediction-api";
 
 const fields: FieldConfig[] = [
   { name: "pregnancies", label: "Pregnancies", type: "number", placeholder: "e.g. 2", min: 0, max: 20 },
@@ -16,14 +17,20 @@ const fields: FieldConfig[] = [
 ];
 
 const DiabetesPrediction = () => {
-  const [result, setResult] = useState<"positive" | "negative" | null>(null);
+  const [result, setResult] = useState<PredictionResponse | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const handlePredict = (data: Record<string, any>) => {
-    // Demo logic: simple threshold-based prediction
-    const glucose = Number(data.glucose);
-    const bmi = Number(data.bmi);
-    const age = Number(data.age);
-    setResult(glucose > 140 || (bmi > 30 && age > 40) ? "positive" : "negative");
+  const handlePredict = async (data: Record<string, any>) => {
+    try {
+      setError(null);
+      const features: Record<string, number> = {};
+      fields.forEach((f) => (features[f.name] = Number(data[f.name])));
+      const response = await predictDisease("diabetes", features);
+      setResult(response);
+    } catch (err: any) {
+      setError(err.message);
+      setResult(null);
+    }
   };
 
   return (
@@ -36,6 +43,9 @@ const DiabetesPrediction = () => {
           fields={fields}
           onSubmit={handlePredict}
         />
+        {error && (
+          <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-destructive">{error}</p>
+        )}
         <PredictionResult result={result} disease="Diabetes" />
       </section>
     </Layout>
