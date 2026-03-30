@@ -35,6 +35,7 @@ const App = () => (
           <Route path="/predict/liver" element={<LiverPrediction />} />
           <Route path="/ml-models" element={<MLModels />} />
           <Route path="/references" element={<References />} />
+          <Route path="/testing" element={<TestingEvaluation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
