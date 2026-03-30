@@ -13,6 +13,7 @@ const navLinks = [
   { to: "/predict/heart", label: "Heart" },
   { to: "/predict/kidney", label: "Kidney" },
   { to: "/predict/liver", label: "Liver" },
+  { to: "/references", label: "References" },
 ];
 
 const Navbar = () => {
