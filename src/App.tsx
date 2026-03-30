@@ -12,6 +12,7 @@ import HeartPrediction from "./pages/HeartPrediction";
 import KidneyPrediction from "./pages/KidneyPrediction";
 import LiverPrediction from "./pages/LiverPrediction";
 import MLModels from "./pages/MLModels";
+import References from "./pages/References";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
