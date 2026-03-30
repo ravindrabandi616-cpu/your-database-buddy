@@ -13,6 +13,7 @@ import KidneyPrediction from "./pages/KidneyPrediction";
 import LiverPrediction from "./pages/LiverPrediction";
 import MLModels from "./pages/MLModels";
 import References from "./pages/References";
+import TestingEvaluation from "./pages/TestingEvaluation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/predict/liver" element={<LiverPrediction />} />
           <Route path="/ml-models" element={<MLModels />} />
           <Route path="/references" element={<References />} />
+          <Route path="/testing" element={<TestingEvaluation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
