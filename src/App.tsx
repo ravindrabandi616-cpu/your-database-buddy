@@ -13,6 +13,7 @@ import KidneyPrediction from "./pages/KidneyPrediction";
 import LiverPrediction from "./pages/LiverPrediction";
 import MLModels from "./pages/MLModels";
 import References from "./pages/References";
+import TestingEvaluation from "./pages/TestingEvaluation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
